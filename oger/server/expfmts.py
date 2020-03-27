@@ -43,6 +43,7 @@ _exporters = (
     ('xml', doc.EntityXMLFormatter),
     ('bioc', doc.BioCXMLFormatter),
     ('bioc_json', doc.BioCJSONFormatter),
+    ('conll', doc.CoNLLFormatter),
     ('pubanno_json', doc.PubAnnoJSONFormatter),
     ('pubtator', doc.PubTatorFormatter),
     ('pubtator_fbk', doc.PubTatorFBKFormatter),
@@ -58,7 +59,7 @@ def export(document, config, fmt, **params):
     '''
     Export article to fmt, considering the settings in config.
     '''
-    if fmt == 'tsv':
+    if fmt == 'tsv' or fmt == 'conll':
         content_type = 'text/tab-separated-values; charset=UTF-8'
     elif fmt.endswith('json'):
         content_type = 'application/json; charset=UTF-8'
